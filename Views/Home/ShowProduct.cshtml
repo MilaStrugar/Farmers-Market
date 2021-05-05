@@ -1,0 +1,57 @@
+@model Product
+
+<h1>@ViewBag.Show.Name</h1>
+<div class="d-flex justify-content-between m-5">
+    <div>
+        <p><a href="/vendor/@ViewBag.Show.VendorId">@ViewBag.Show.Vendor.VendorName</a></p>
+        <p>@ViewBag.Show.Description</p>
+        <p>Price: @ViewBag.Show.Price.ToString("#.##")</p>
+        <p>Quantity: @ViewBag.Show.Quantity</p>
+    </div>
+    <div>
+        <img src="@ViewBag.Show.Image" class="card-img-top" alt="...">
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Write A Review
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Write A Review</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Review" asp-controller="Home" asp-route-type="Product"
+                    asp-route-id="@ViewBag.Show.ProductId" method="post">
+                    <partial name="_ReviewForm">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <h3>Reviews:</h3>
+    @foreach (var r in ViewBag.Show.ProductReview)
+    {
+        <div class="card">
+
+            <div class="card-header">
+                <p>Rating: @r.Review.Rating</p>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Reviewed by @r.Review.Reviewer.FirstName</h5>
+                <p class="card-text">@r.Review.ReviewMessage</p>
+                <img style="Height: 80px; Width: 80px;" src="@r.Review.ReviewImage" alt="@ViewBag.Show.Name">
+            </div>
+        </div>
+    }
+</div>

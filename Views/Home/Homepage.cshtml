@@ -1,0 +1,79 @@
+@model List<Vendor>
+
+
+
+<div class="text-center">
+    <div class="jumbotron text-light" id="Farmbg">
+        <div id="textBG" class="p-2">
+            <h1 class="display-4"><strong>Welcome to the Farmers market!</strong></h1>
+            <p class="lead">Now you can shop Online for an assortment of local farmers and vendors to pick up every
+                Wednesday and Saturday from the Market!</p>
+            <hr class="my-4">
+            <br>
+            <br>
+            <br>
+            <p>Our Market includes over 50 Vendors from across the State. click below to see what they have to
+                offer!</p>
+            <a class="btn btn-primary btn-lg mb-1" href="/allvendors" role="button">Our Vendors</a>
+        </div>
+    </div>
+
+    <div class="p-5 d-flex flex-wrap justify-content-between" id="CatID">
+        <div class="card border-danger" style="max-width: 18rem;">
+            <img src="../img/Farmers-Market-Image3.jpg" class="card-img-top cardImg" alt="an image">
+            <div class="card-body text-danger">
+                <h5 class="card-title">Shop By Category</h5>
+                <p class="card-text">
+                    Search out market by vendor or product category!
+                </p>
+                <a class="btn btn-lg btn-danger" href="/allcategories">Categories</a>
+            </div>
+        </div>
+        <div class="card border-warning" style="max-width: 18rem;">
+            <img src="../img/Farmers-Market-Image2.jpg" class="card-img-top cardImg" alt="an image">
+            <div class="card-body text-warning">
+                <h5 class="card-title">Our Products</h5>
+                <p class="card-text">
+                    Take a look at all the products our vendors are offering.
+                </p>
+                <a class="btn btn-lg btn-warning" href="/allproducts">Products</a>
+            </div>
+        </div>
+        <div class="card border-info" style="max-width: 18rem;">
+            <img src="../img/ninjas_3.png" class="card-img-top cardImg" alt="an image">
+            <div class="card-body text-info">
+                <h5 class="card-title">About Us</h5>
+                <p class="card-text">Get to know us by reading our story!
+                </p>
+                <a class="btn btn-lg btn-info" href="/about">About</a>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="my-4">All Vendors<h4>
+            <div class="d-flex justify-content-around">
+                @foreach (var v in Model)
+                {
+                    <div class="card border-warning mb-3" style="width: 15rem; height: 25rem;">
+                        <div class="card-header"><a href="/vendor/@v.VendorId">@v.VendorName</a></div>
+                        <div class="card-body">
+                            <img src="@v.Image" class="card-img-top" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <a href="/vendor/@v.VendorId" class="btn btn-outline-success">View Vendor</a>
+                        </div>
+                    </div>
+                }
+                @* @foreach (var vendor in Model)
+                    {
+                    <div class="card border-warning mb-5" style="max-width: 15rem;">
+                    <div class="card-header"><a href="/vendor/@vendor.VendorId">@vendor.VendorName</a></div>
+                    <div class="card-body text-info">
+                    <h5 class="card-title">@vendor.VendorOwner</h5>
+                    <p class="card-text">@vendor.VendorLocation</p>
+                    <p class="card-text">@vendor.VendorEmail</p>
+                    <p class="card-text">@vendor.VendorPhone</p>
+                    </div>
+                    </div>
+                    } *@
+            </div>

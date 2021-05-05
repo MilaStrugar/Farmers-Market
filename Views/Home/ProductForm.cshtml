@@ -1,0 +1,58 @@
+@model Product
+<div>
+    <h2>Add a New Product</h2>
+    <form method="post" asp-action="AddProduct">
+        <div class="mb-3">
+            <span asp-validation-for="Name"></span>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control">
+        </div>
+        <div class="mb-3">
+            <span asp-validation-for="Description"></span>
+            <label asp-for="Description"></label>
+            <input asp-for="Description" class="form-control">
+        </div>
+        <div class="mb-3">
+            <span asp-validation-for="Price"></span>
+            <label asp-for="Price"></label>
+            <input asp-for="Price" class="form-control">
+        </div>
+        <div class="mb-3">
+            <span asp-validation-for="Quantity"></span>
+            <label asp-for="Quantity"></label>
+            <input asp-for="Quantity" class="form-control">
+        </div>
+        <div class="mb-3">
+            <span asp-validation-for="VendorId"></span>
+            <label asp-for="VendorId"></label>
+            <input asp-for="VendorId" class="form-control">
+        </div>
+        <div class="mb-3">
+            <span asp-validation-for="Image"></span>
+            <label asp-for="Image"></label>
+            <input asp-for="Image" class="form-control">
+        </div>
+        <select name="C1" class="custom-select">
+            <option value="null"> -- </option>
+            @foreach (var c in ViewBag.AllCategories)
+            {
+                <option value="@c.CategoryId">@c.Name</option>
+            }
+        </select>
+        <select name="C2" class="custom-select">
+            <option value="null"> -- </option>
+            @foreach (var c in ViewBag.AllCategories)
+            {
+                <option value="@c.CategoryId">@c.Name</option>
+            }
+        </select>
+        <select name="C3" class="custom-select">
+            <option value="null"> -- </option>
+            @foreach (var c in ViewBag.AllCategories)
+            {
+                <option value="@c.CategoryId">@c.Name</option>
+            }
+        </select>
+        <input type="submit" value="Add Product" class="btn btn-outline-success">
+    </form>
+</div>

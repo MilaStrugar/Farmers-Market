@@ -1,0 +1,36 @@
+@model User
+<div>
+    <form method="post" asp-action="Register">
+        <fieldset class="form-group border border-dark p-3 mx-auto">
+            <legend class="w-auto px-2">
+                <h2>Register Here!</h2>
+            </legend>
+            <div class="mb-3">
+                <span asp-validation-for="FirstName"></span>
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control">
+            </div>
+            <div class="mb-3">
+                <span asp-validation-for="LastName"></span>
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control">
+            </div>
+            <div class="mb-3">
+                <span asp-validation-for="Email"></span>
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control">
+            </div>
+            <div class="mb-3">
+                <span asp-validation-for="Password"></span>
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control">
+            </div>
+            <div class="mb-3">
+                <span asp-validation-for="ConfirmPassword"></span>
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" class="form-control">
+            </div>
+            <input type="submit" value="Register Account" class="btn btn-dark btn-outline-success">
+        </fieldset>
+    </form>
+</div>

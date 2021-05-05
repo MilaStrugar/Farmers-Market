@@ -1,0 +1,23 @@
+@model List<Vendor>
+
+<div class="text-center">
+    <h1>Explore All Vendors Below<h1>
+</div>
+<div class="d-flex justify-content-between">
+    @foreach (var v in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <img src="@v.Image" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@v.VendorName</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Owners: @v.VendorOwner</li>
+                <li class="list-group-item">@v.VendorLocation</li>
+                <li class="list-group-item">Categories: </li>
+            </ul>
+            <div class="card-body">
+                <a href="/vendor/@v.VendorId" class="btn btn-outline-success">View Vendor</a>
+            </div>
+        </div>
+    }

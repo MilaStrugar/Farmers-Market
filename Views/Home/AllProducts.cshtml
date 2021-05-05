@@ -1,0 +1,31 @@
+@model List<Product>
+
+<div class="text-center">
+    <h1>Explore All Products Below<h1>
+</div>
+<div class="d-flex justify-content-between flex-wrap">
+    @foreach (var p in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <img src="@p.Image" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@p.Name</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Categories:
+                    @foreach (var c in p.ProductCategory)
+                    {
+                        @c.Category.Name
+                    }
+                </li>
+                <li class="list-group-item">Vendor: @p.Vendor.VendorName</li>
+                <li class="list-group-item">Price: @p.Price.ToString("#.##")</li>
+                <li class="list-group-item">Quantity Remaining: @p.Quantity</li>
+            </ul>
+            <div class="card-body text-center">
+                <a href="/Product/@p.ProductId" class="btn btn-outline-info">Product Detail</a>
+                <a href="/vendor/@p.Vendor.VendorId" class="btn btn-outline-success">View Vendor</a>
+                <a href="addtocart/@ViewBag.loggedUser.UserId/@p.ProductId" class="btn btn-outline-primary">Add to Cart</a>
+            </div>
+        </div>
+    }

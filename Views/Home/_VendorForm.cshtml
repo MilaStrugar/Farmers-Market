@@ -1,0 +1,52 @@
+@model Vendor
+<div>
+    <h2>Create New Vendor</h2>
+    <form method="post" asp-action="AddVendor">
+        <div class="mb-3">
+            <span asp-validation-for="VendorName"></span>
+            <label asp-for="VendorName"></label>
+            <input asp-for="VendorName" class="form-control">
+        </div>
+        <div class="mb-3">
+            <span asp-validation-for="VendorOwner"></span>
+            <label asp-for="VendorOwner"></label>
+            <input asp-for="VendorOwner" class="form-control">
+        </div>
+        <div class="mb-3">
+            <span asp-validation-for="VendorEmail"></span>
+            <label asp-for="VendorEmail"></label>
+            <input asp-for="VendorEmail" class="form-control">
+        </div>
+        <div class="mb-3">
+            <span asp-validation-for="VendorSite"></span>
+            <label asp-for="VendorSite"></label>
+            <input asp-for="VendorSite" class="form-control">
+        </div>
+        <div class="mb-3">
+            <span asp-validation-for="VendorPhone"></span>
+            <label asp-for="VendorPhone"></label>
+            <input asp-for="VendorPhone" class="form-control">
+        </div>
+        <div class="mb-3">
+            <span asp-validation-for="VendorLocation"></span>
+            <label asp-for="VendorLocation"></label>
+            <input asp-for="VendorLocation" class="form-control">
+        </div>
+        <div class="mb-3">
+            <span asp-validation-for="VendorDescription"></span>
+            <label asp-for="VendorDescription"></label>
+            <input asp-for="VendorDescription" class="form-control">
+        </div>
+        <div class="mb-3">
+            <span asp-validation-for="VendorJoinDate"></span>
+            <label asp-for="VendorJoinDate"></label>
+            <input asp-for="VendorJoinDate" class="form-control">
+        </div>
+        <div class="mb-3">
+            <span asp-validation-for="Image"></span>
+            <label asp-for="Image"></label>
+            <input asp-for="Image" class="form-control">
+        </div>
+        <input type="submit" value="Add Vendor" class="btn btn-outline-success">
+    </form>
+</div>

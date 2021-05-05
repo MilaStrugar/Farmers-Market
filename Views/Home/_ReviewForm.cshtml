@@ -1,0 +1,21 @@
+@model Review
+
+<input type="hidden" name="UserId" value="@ViewBag.loggedUser.UserId">
+<div class="form-group-8">
+  <span class="col-sm-8 offset-sm-4 text-danger"></span>
+  <label asp-for="ReviewMessage" class="col-sm-4"></label>
+  <textarea asp-for="ReviewMessage" class="form-control"></textarea>
+</div>
+<div class="form-group-8">
+  <span class="col-sm-8 offset-sm-4 text-danger"></span>
+  <label asp-for="ReviewImage" class="col-sm-4"></label>
+  <input asp-for="ReviewImage" class="form-control" />
+</div>
+<div class="form-group-8">
+  <span class="col-sm-8 offset-sm-4 text-danger"></span>
+  <label asp-for="Rating" class="col-sm-4"></label>
+  <input asp-for="Rating" class="form-control" />
+</div>
+<div class="form-group-row">
+  <input type="submit" value="Submit" class="btn btn-outline-primary">
+</div>

@@ -1,0 +1,33 @@
+@model User
+
+<div>
+    <h1>@ViewBag.loggedUser.FirstName's Cart</h1>
+    <div class="d-flex justify-content-between">
+        <h1>Current Cart: @Model.Cart.Count Items for $@ViewBag.Total.ToString("#.##")</h1>
+        <div>
+            <a href="/checkout" class="btn btn-success">Checkout</a>
+        </div>
+    </div>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model.Cart)
+        {
+            <tr>
+                <td>@c.Products.Name</td>
+                <td>@c.Products.Price.ToString("#.##")</td>
+                @* <td>@c.Products.Quantity</td> *@
+                <td>1</td>
+                    <td><a href="removefromcart/@ViewBag.loggedUser.UserId/@c.ProductId" class="btn btn-outline-primary">Remove Item</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

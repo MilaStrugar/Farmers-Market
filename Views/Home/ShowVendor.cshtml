@@ -1,0 +1,80 @@
+<h1>@ViewBag.Show.VendorName</h1>
+<div class="d-flex justify-content-between m-5">
+    <div>
+        <p>Owners: @ViewBag.Show.VendorOwner</p>
+        <p>Location: @ViewBag.Show.VendorLocation</p>
+        <p>About: @ViewBag.Show.VendorDescription</p>
+        <p>Member Since: @ViewBag.Show.VendorJoinDate</p>
+        <h5>Contact Info:</h5>
+        <p>Email: @ViewBag.Show.VendorEmail</p>
+        <p>Website: <a href="@ViewBag.Show.VendorSite" target="_blank">@ViewBag.Show.VendorSite</a></p>
+        <p>Phone: @ViewBag.Show.VendorPhone</p>
+    </div>
+    <div>
+        <img src="@ViewBag.Show.Image" class="card-img-top" alt="...">
+    </div>
+</div>
+<h3>Our Products</h3>
+<div class="d-flex justify-content-between p-3">
+    @foreach (var p in ViewBag.Show.Products)
+    {
+        <center>
+            <div class="card p-5" style="width: 220px;">
+                <img style="Height: auto; Width: 200px ml-2;" src="@p.Image" class="card-img-top" alt="@p.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@p.Name</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Price: $@p.Price.ToString("#.##")</li>
+                    <li class="list-group-item">Quantity Remaining: @p.Quantity</li>
+                </ul>
+                <div class="card-body text-center">
+                    <a href="/Product/@p.ProductId" class="btn btn-outline-info">Product Detail</a>
+                    <a href="addtocart/@ViewBag.loggedUser.UserId/@p.ProductId" class="btn btn-outline-primary mt-2">Add to
+                        Cart</a>
+                </div>
+            </div>
+        </center>
+    }
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#exampleModal">
+    Write A Review
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Write A Review</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Review" asp-controller="Home" asp-route-type="Vendor"
+                    asp-route-id="@ViewBag.Show.VendorId" method="post">
+                    <partial name="_ReviewForm">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <h3>Reviews:</h3>
+    @foreach (var r in ViewBag.Show.VendorReviews)
+    {
+        <div class="card mb-2">
+            <div class="card-header">
+                Rating: @r.Review.Rating
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Reviewed by @r.Review.Reviewer.FirstName</h5>
+                <p class="card-text">@r.Review.ReviewMessage</p>
+                <img style="Height: 80px; Width: 80px;" src="@r.Review.ReviewImage" alt="@ViewBag.Show.VendorName">
+            </div>
+        </div>
+    }
+</div>
